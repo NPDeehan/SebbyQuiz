@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="550.0" prefWidth="1020.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nd.create.quote.view.RootLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="creatNewQuestionFile" mnemonicParsing="false" onAction="#handleCreateNewFile" text="New Question File" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open Question File" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save Question File As.." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save Question File" />
+                  <MenuItem fx:id="createQuestionMenuItem" mnemonicParsing="false" onAction="#handleCreateQuestions" text="Create New Question" />
+              <MenuItem mnemonicParsing="false" onAction="#handelClose" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

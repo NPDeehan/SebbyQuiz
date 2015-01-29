@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nd.create.quote.view.ChartOfVictoryDialogController">
+   <children>
+      <PieChart fx:id="chart" labelLineLength="30.0" layoutX="25.0" layoutY="7.0" styleClass="background-white" title="Your Answers">
+         <effect>
+            <DropShadow />
+         </effect></PieChart>
+      <Button layoutX="249.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleCancel" stylesheets="@DarkTheme.css" text="Close" />
+   </children>
+</AnchorPane>

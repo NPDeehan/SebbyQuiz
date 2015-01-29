@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1050.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nd.create.quote.view.QuoteOverviewController">
+   <children>
+      <SplitPane dividerPositions="0.1891891891891892" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="360.0" styleClass="background" stylesheets="@DarkTheme.css">
+               <children>
+                  <TableView fx:id="questionsTable" layoutX="3.0" layoutY="21.0" prefHeight="499.0" prefWidth="205.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="questionNameColumn" onEditStart="#handelEdit" prefWidth="200.0" text="Questions" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="657.0" styleClass="background" stylesheets="@DarkTheme.css">
+               <children>
+                  <Label layoutX="14.0" layoutY="52.0" styleClass="label-bright" text="&lt;---- Select A Question -----" />
+                  <Pane layoutX="181.0" layoutY="121.0" prefHeight="100.0" prefWidth="400.0" styleClass="background-other" stylesheets="@DarkTheme.css">
+                     <children>
+                        <Label fx:id="questionLabel" alignment="CENTER" layoutX="8.0" prefHeight="100.0" prefWidth="384.0" styleClass="label-bright" wrapText="true" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="editQuestionButton" layoutX="293.0" layoutY="19.0" mnemonicParsing="false" onAction="#handelEdit" text="Edit" />
+                  <Group layoutX="2.0">
+                     <children>
+                        <Button fx:id="answerBButton" layoutX="56.0" layoutY="303.0" mnemonicParsing="false" onAction="#handelGuessB" prefHeight="50.0" text="B" />
+                        <Button fx:id="answerCButton" layoutX="56.0" layoutY="360.0" mnemonicParsing="false" onAction="#handelGuessC" prefHeight="50.0" text="C" />
+                        <Button fx:id="answerDButton" layoutX="56.0" layoutY="417.0" mnemonicParsing="false" onAction="#handelGuessD" prefHeight="50.0" text="D" />
+                        <Button fx:id="answerAButton" layoutX="56.0" layoutY="247.0" mnemonicParsing="false" onAction="#handelGuessA" prefHeight="50.0" text="A" />
+                     </children>
+                  </Group>
+                  <Button fx:id="deleteQuestionButton" layoutX="381.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleDeleteQuestion" text="Delete" />
+                  <Button fx:id="tryAgainButton" layoutX="46.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleTryAgain" styleClass="button-yellow" text="Try Again" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

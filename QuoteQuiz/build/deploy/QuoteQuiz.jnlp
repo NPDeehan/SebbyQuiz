@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="QuoteQuiz.jnlp">
+  <information>
+    <title>QuoteQuiz</title>
+    <vendor>SebBerkovich</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="8.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="QuoteQuiz.jar" size="27197" download="eager" />
+    <jar href="libs/commons-validator-1.4.0.jar" size="176897" download="eager" />
+    <jar href="libs/controlsfx-8.0.6_20.jar" size="856539" download="eager" />
+    <jar href="libs/org.apache.commons.httpclient.jar" size="307550" download="eager" />
+  </resources>
+  <applet-desc  width="0" height="0" main-class="com.javafx.main.NoJavaFXFallback"  name="SebbieFunQuoteQuiz" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="0" height="0" main-class="nd.create.quote.MainApp"  name="SebbieFunQuoteQuiz" />
+  <update check="background"/>
+</jnlp>
