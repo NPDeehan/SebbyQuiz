@@ -58,6 +58,10 @@ public class MainApp extends Application {
 //		quizQuestions.add(testQuestionTwo);
 	}
 	
+	/**
+	 * This will add a question to the global list.
+	 * @param question
+	 */
 	public void addQuestionToList(QuizQuestion question)
 	{
 		quizQuestions.add(question);
@@ -66,7 +70,9 @@ public class MainApp extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-
+    /*
+     * Launches the application
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -85,14 +91,17 @@ public class MainApp extends Application {
 	}
 	
     /**
-     * Returns the data as an observable list of Persons. 
+     * Returns the data as an observable list of Questions. 
      * @return
      */
     public ObservableList<QuizQuestion> getQuestionData() {
         return quizQuestions;
     }
     
-	
+	/**
+	 * This can be used for debugging and testing, It's currently not being used
+	 * @return
+	 */
 	private QuizQuestion setUpDefaultQuestionOne()
 	{
 
@@ -119,6 +128,10 @@ public class MainApp extends Application {
 		return defaultQuestoin;
 	}
 	
+	/**
+	 * This can be used for debugging and testing, It's currently not being used
+	 * @return
+	 */
 	private QuizQuestion setUpDefaultQuestionTwo()
 	{
 
@@ -145,15 +158,17 @@ public class MainApp extends Application {
 
 	}
 	
-
+	/**
+	 * This will show the Quote overview panel that displays the question. 
+	 */
 	 private void showQuoteOverview() {
 	    	try {
-	            // Load person overview.
+	            // Load question overview.
 	            FXMLLoader loader = new FXMLLoader();
 	            loader.setLocation(MainApp.class.getResource("view/QuoteOverview.fxml"));
 	            AnchorPane personOverview = (AnchorPane) loader.load();
 
-	            // Set person overview into the center of root layout.
+	            // Set question overview into the center of root layout.
 	            rootLayout.setCenter(personOverview);
 
 	            // Give the controller access to the main app.
@@ -169,6 +184,7 @@ public class MainApp extends Application {
 	 
 	  /**
 	     * Opens a dialog to show ABOUT
+	     * The about dialog also controlls if Admin Mode is active or not.
 	     */
 	    public void showAbout() {
 	        try {
@@ -183,10 +199,10 @@ public class MainApp extends Application {
 	            Scene scene = new Scene(page);
 	            dialogStage.setScene(scene);
 
-	            // Set the persons into the controller.
+	            
 	            AboutDialogController controller = loader.getController();
 	            controller.setDialogStage(dialogStage);
-
+	            // Get the weird image and add it to the dialog
 	            Image oddImage = new Image("file:resources/images/J8oocez.gif");
 	            
 	            controller.setupImage(oddImage);
@@ -199,7 +215,8 @@ public class MainApp extends Application {
 	    }
 	    
 	    /**
-	     * Opens a dialog to show ABOUT
+	     * Opens a dialog in which an admin user will be able to create a question for a quiz 
+	     * being made.
 	     */
 	    public void showCreateQuestion() {
 	        try {
@@ -214,7 +231,6 @@ public class MainApp extends Application {
 	            Scene scene = new Scene(page);
 	            dialogStage.setScene(scene);
 
-	            // Set the persons into the controller.
 	            CreateQuestionController controller = loader.getController();
 	            controller.setDialogStage(dialogStage);
 	            controller.setMainApp(this);
@@ -225,7 +241,9 @@ public class MainApp extends Application {
 	            e.printStackTrace();
 	        }
 	    }
-	    
+	    /**
+	     * Little chat that shows up at the end of the quiz so that the user can see how well they did
+	     */
 	    public void showChartOfVictory()
 	    {
 	    	try{
@@ -240,11 +258,11 @@ public class MainApp extends Application {
 	            Scene scene = new Scene(page);
 	            dialogStage.setScene(scene);
 	
-	            // Set the persons into the controller.
+
 	            ChartOfVictoryDialogController controller = loader.getController();
 	            controller.setDialogStage(dialogStage);
 	            controller.initialize(quizQuestions);
-	           // controller.setMainApp(this);
+
 	            
 	            dialogStage.show();
 	    	  } catch (IOException e) {
@@ -252,7 +270,12 @@ public class MainApp extends Application {
 		      }
 	    }
 	    
-	    
+	    /**
+	     * A quiz answer can contain a Source for the answer given, it's optional but if a user
+	     * chooses to do it, this is the dialog that will help them do that.
+	     * @param quizAns
+	     * @return
+	     */
 	    public boolean showSourceDialog(QuizAns quizAns){
 	    	try{
 	    		
@@ -280,7 +303,11 @@ public class MainApp extends Application {
             
 	    }
 	    
-	    
+	    /**
+	     * This allows an Admin user to edit a question.
+	     * @param question
+	     * @return
+	     */
 	    public boolean editQuestionLaunch(QuizQuestion question) {
 	    	 try {
 		            // Load the fxml file and create a new stage for the popup.
@@ -313,7 +340,7 @@ public class MainApp extends Application {
 
 	/**
      * Initializes the root layout and tries to load the last opened
-     * person file.
+     * question file.
      */
     public void initRootLayout() {
         try {
@@ -365,17 +392,29 @@ public class MainApp extends Application {
         }
     }
     
+    /**
+     * This returns the image for an incorrect answer - it is attached to the selected button
+     * @return
+     */
     public Image getIncorrectImage()
     {
     	Image IncorrectImage = new Image("file:resources/images/Wrong2.png");
     	
     	return IncorrectImage;
     }
+    /**
+     * This returns the image for an correct answer - it is attached to the selected button
+     * @return
+     */
     public Image getCorrectImage()
     {
     	return new Image("file:resources/images/Correct3.png");
     }
-    
+    /**
+     * This get the questions from an XML file and then adds them to the global variable that stores
+     * the questions.
+     * @param file
+     */
     public void loadQuestionDataFromFile(File file) {
         try {
             JAXBContext context = JAXBContext
@@ -391,7 +430,7 @@ public class MainApp extends Application {
             // Save the file path to the registry.
             setQuestionFilePath(file);
 
-        } catch (Exception e) { // catches ANY exception
+        } catch (Exception e) { 
             Dialogs.create()
                     .title("Error")
                     .masthead("Could not load data from file:\n" + file.getPath())
@@ -400,7 +439,7 @@ public class MainApp extends Application {
     }
     
     /**
-     * Returns the person file preference, i.e. the file that was last opened.
+     * Returns the question file preference, i.e. the file that was last opened.
      * The preference is read from the OS specific registry. If no such
      * preference can be found, null is returned.
      * 
@@ -448,11 +487,17 @@ public class MainApp extends Application {
         }
     }
     
-
+    /**
+     * returns the variable that defines if admin mode is activeated or not.
+     * @return
+     */
 	public boolean isAdminMode() {
 		return adminMode;
 	}
-
+	/**
+	 * This sets the Admin mode either on (true) or off (false) - Admin mode give the users more options 
+	 * @param isAdminMode
+	 */
 	public void setAdminMode(boolean isAdminMode) {
 		
 		adminMode = isAdminMode;
@@ -460,30 +505,36 @@ public class MainApp extends Application {
 		rootLayoutController.setAdminMode(isAdminMode);
 		resetChoicesQuestionsAndAnswers();
 	}
-	
+	/**
+	 * This resets all of the answers give by a user.
+	 */
 	public void resetChoicesQuestionsAndAnswers() {
-		
+		// All answers and questions will revert to "Not Answered" 
 		for(QuizQuestion question: quizQuestions){
 			question.setQuestionAnswered(false);
 			for(QuizAns answer: question.getAnswers()){
-				answer.setAnswerChosen(false);
+				answer.setAnswerChosen(false); 
 			}
 		}
 	}
 	
-	
+	/**
+	 * If all questions are answered this will return true.
+	 * @return
+	 */
 	public boolean areAllQustionsAnswered()
 	{
+		//goes through the questions until it finds one that has no been answered.
 		for(QuizQuestion question: quizQuestions){
 			if(question.isQuestionAnswered() == false)
 				return false;
 		}
 		
 		return true;
-		
-		
 	}
-	
+	/**
+	 * For a non-Admin user this method finds the next unanswered question and displays it
+	 */
 	public void loadNextQuestion()
 	{
 		if(isAdminMode())
