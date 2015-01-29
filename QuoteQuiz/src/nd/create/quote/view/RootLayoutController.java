@@ -3,6 +3,7 @@ package nd.create.quote.view;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import nd.create.quote.MainApp;
@@ -16,6 +17,10 @@ public class RootLayoutController {
 	
 	@FXML 
 	private MenuItem creatNewQuestionFile;
+	
+	@FXML 
+	private Menu adminMenu;
+	
 	
     /**
      * Is called by the main application to give a reference back to itself.
@@ -100,6 +105,7 @@ public class RootLayoutController {
    
     public void setAdminMode(boolean adminMode)
     {
+    	adminMenu.setVisible(adminMode);
     	createQuestionMenuItem.setVisible(adminMode);
     	creatNewQuestionFile.setVisible(adminMode);
     }

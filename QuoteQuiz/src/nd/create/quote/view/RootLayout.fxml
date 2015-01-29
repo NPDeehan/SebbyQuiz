@@ -11,14 +11,18 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="creatNewQuestionFile" mnemonicParsing="false" onAction="#handleCreateNewFile" text="New Question File" />
                   <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open Question File" />
                   <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save Question File As.." />
                   <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save Question File" />
-                  <MenuItem fx:id="createQuestionMenuItem" mnemonicParsing="false" onAction="#handleCreateQuestions" text="Create New Question" />
               <MenuItem mnemonicParsing="false" onAction="#handelClose" text="Close" />
             </items>
           </Menu>
+            <Menu fx:id="adminMenu" mnemonicParsing="false" text="Admin Options" visible="false">
+              <items>
+                  <MenuItem fx:id="creatNewQuestionFile" mnemonicParsing="false" onAction="#handleCreateNewFile" text="New Question File" />
+                  <MenuItem fx:id="createQuestionMenuItem" mnemonicParsing="false" onAction="#handleCreateQuestions" text="Create New Question" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />

@@ -21,26 +21,34 @@ import nd.create.quote.utils.URLAdapter;
 
 
 /**
- * This object is an answer to a quiz question, it contains the text of the answer, a boolean descibling weather it is corret 
+ * This object is an answer to a quiz question, it contains the text of the answer, 
+ * a boolean descibling weather it is correct 
  * or not and also an optional response for when the user guesses it. 
+ * There is also a boolean that holds if this answer has been selected by the user.
+ * 
  * @author Seb
  *
  */
 
 public class QuizAns {
-	
+	//This is the text of the answer
 	private String answer;
-
+	//This defines if the answer is correct or not
 	private boolean correct;
-	
+	//This is optional text that will appear if a user guesses this answer
 	private String response;
-	
+	//This is an option Sting value of a URL that will take a user to the source of the answer
 	private String sourceString;
-	
+	//This is a URL object that will take a user to the source of the answer
 	private URL sourceURL;
-	
+	//If a user has chosen this answer it will be set to true.
 	private boolean answerChosen = false;
 
+	/**
+	 * This is a constructor that takes a quiz answer string and if it is correct
+	 * @param quizAnswer
+	 * @param correctAns
+	 */
 	public QuizAns(String quizAnswer, boolean correctAns) {
 		
 		answer = quizAnswer;
@@ -49,10 +57,13 @@ public class QuizAns {
 		sourceString = "";
 		sourceURL = null;
 
-			
-			
 	}
-	
+	/**
+	 * This is a constructor that takes a quiz answer string, if it is correct and a response string
+	 * @param quizAnswer
+	 * @param correctAns
+	 * @param guessResponse
+	 */
 	public QuizAns(String quizAnswer, boolean correctAns, String guessResponse) {
 		answer = quizAnswer;
 		correct = correctAns;
@@ -60,7 +71,9 @@ public class QuizAns {
 		sourceString = "";
 		sourceURL = null;
 	}
-	
+	/**
+	 * default constructor
+	 */
 	public QuizAns()
 	{
 		answer = "";
